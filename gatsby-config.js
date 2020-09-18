@@ -29,12 +29,13 @@ module.exports = {
         name: `Picksome.one`,
         short_name: `picksomeone`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
+        background_color: `#FFFFFF`,
+        theme_color: `#FFFFFF`,
+        display: `browser`,
         icon: `src/images/gatsby-icon.png` // This path is relative to the root of the site.
       }
-    }
+    },
+    "gatsby-theme-material-ui",
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
