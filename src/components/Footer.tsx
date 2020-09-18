@@ -1,5 +1,5 @@
 import React from "react"
-import { styled } from "@material-ui/core/styles"
+import { styled } from "@material-ui/core"
 
 interface Props {
   children: React.ReactNode

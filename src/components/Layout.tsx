@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./Header"
 import { Container } from "@material-ui/core"
 import Footer from "./Footer"
+import MainContent from "./MainContent"
 
 interface Props {
   children: React.ReactNode
@@ -22,7 +23,7 @@ const Layout = ({ children }: Props) => {
   return (
     <Container maxWidth="sm">
       <Header siteTitle={data.site.siteMetadata.title} />
-      <main>{children}</main>
+      <MainContent>{children}</MainContent>
       <Footer>© Evan Brodie</Footer>
     </Container>
   )
