@@ -11,12 +11,11 @@ import { useStaticQuery, graphql } from "gatsby"
 
 interface Props {
   description?: string
-  lang?: string,
-  meta?: any[], // TODO: Use a better type
-  title: string,
+  lang?: string
+  title: string
 }
 
-function SEO({ description = "", lang = "en", meta = [], title }: Props) {
+function SEO({ description = "", lang = "en", title }: Props) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -73,11 +72,9 @@ function SEO({ description = "", lang = "en", meta = [], title }: Props) {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+      ]}
     />
   )
 }
-
-
 
 export default SEO

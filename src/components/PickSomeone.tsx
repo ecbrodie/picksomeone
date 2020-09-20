@@ -42,7 +42,7 @@ export default function PickSomeone() {
       {people.length === 0 ? (
         <Box>
           <NoPeoplePlaceholder>
-            There are none...why don't you add some people?
+            There are none...why don&apos;t you add some people?
           </NoPeoplePlaceholder>
         </Box>
       ) : (
