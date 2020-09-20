@@ -29,7 +29,7 @@ export default function PickSomeone() {
       </Box>
       <form onSubmit={onInputSubmit}>
         <TextField
-          style={{ width: "100%" }}
+          fullWidth
           label="Add Someone"
           variant="outlined"
           value={personInput}
