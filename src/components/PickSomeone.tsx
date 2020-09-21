@@ -24,6 +24,12 @@ const PersonText = styled(Typography)({
 export default function PickSomeone() {
   const [people, setPeople] = useState<string[]>([])
   const [personInput, setPersonInput] = useState("")
+  const [chosenPerson, setChosenPerson] = useState("")
+
+  const pickSomeone = () => {
+    const randomPersonIndex = getRandomInt(people.length)
+    setChosenPerson(people[randomPersonIndex])
+  }
 
   const onInputSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -34,16 +40,27 @@ export default function PickSomeone() {
       }
       setPersonInput("")
     }
+    setChosenPerson("")
   }
 
   const removePerson = (person: string) => () => {
     setPeople(people.filter(p => p !== person))
+    setChosenPerson("")
   }
 
   return (
     <Box display="flex" flexDirection="column">
-      <Box my={2}>
-        <Button variant="contained">Pick Someone!</Button>
+      <Box my={2} display="flex" alignItems="baseline">
+        <Button variant="contained" onClick={pickSomeone} disabled={people.length === 0}>
+          Pick Someone!
+        </Button>
+        {chosenPerson.length > 0 && (
+          <Box ml={1}>
+            <Typography>
+              🙌&nbsp;&nbsp;<b>THE CHOSEN ONE:</b>&nbsp;{chosenPerson}&nbsp;🙌
+            </Typography>
+          </Box>
+        )}
       </Box>
       <form onSubmit={onInputSubmit}>
         <TextField
@@ -63,8 +80,10 @@ export default function PickSomeone() {
         </Box>
       ) : (
         people.map(person => (
-          <PersonBox key={person} my={0.5} display="flex" justifyContent="space-between">
-            <PersonText noWrap>{person}</PersonText>
+          <PersonBox key={person} my={0.5} py={0.5} display="flex" alignItems="center" justifyContent="space-between">
+            <Box ml={0.5}>
+              <PersonText noWrap>{person}</PersonText>
+            </Box>
             <IconButton aria-label="remove" size="small" onClick={removePerson(person)}>
               <CloseIcon />
             </IconButton>
@@ -73,4 +92,9 @@ export default function PickSomeone() {
       )}
     </Box>
   )
+}
+
+// From JavaScript MDN documentation for Math.floor()
+function getRandomInt(max: number) {
+  return Math.floor(Math.random() * Math.floor(max))
 }
