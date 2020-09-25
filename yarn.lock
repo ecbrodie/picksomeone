@@ -14865,6 +14865,7 @@ fsevents@~2.1.2:
     prettier: ^2.1.2
     react: ^16.13.1
     react-dom: ^16.13.1
+    react-github-corner: ^2.5.0
     react-helmet: ^6.1.0
     typescript: ^4.0.3
   languageName: unknown
@@ -16046,6 +16047,15 @@ fsevents@~2.1.2:
   peerDependencies:
     react: ^16.8.0
   checksum: f181d6413d7c2881d26382c746bf1ee08a4cd1146f776a3acbb1614beb7c7323bc0271cfadbf44e60eb676bdd554e091179c40272a0cdde02b4916742a7efe59
+  languageName: node
+  linkType: hard
+
+"react-github-corner@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "react-github-corner@npm:2.5.0"
+  peerDependencies:
+    react: "*"
+  checksum: 68c696cff6fde05e1c2a7f6fb5769018c06683296da779e8ba49521cac95363c06362766346ae94012a8b175e9de5d0c1ff11af4b703884199e1df57ca1e9241
   languageName: node
   linkType: hard
 
