@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React, { createContext, useState } from "react"
+import React, { createContext, useEffect, useState } from "react"
 import { fetchPersonList, persistPersonList as persistPersonListIntoCookie } from "../api/cookie"
 
 interface PersonListContextState {
@@ -20,7 +20,15 @@ interface ProviderProps {
   children: React.ReactNode
 }
 export const PersonListProvider = ({ children }: ProviderProps) => {
-  const [personList, setPersonList] = useState<string[]>(fetchPersonList())
+  // NOTE: Need to load cookie values in useEffect rather than set as default state value.
+  // Otherwise, React components load in an unstyled state on production,
+  // due to the DOM rendering before the CSS is loaded.
+  // There are also possibly some FOUC issues still to investigate.
+  const [personList, setPersonList] = useState<string[]>([])
+
+  useEffect(() => {
+    setPersonList(fetchPersonList())
+  }, [])
 
   const persistPersonList = (list: string[]) => {
     setPersonList(list)
