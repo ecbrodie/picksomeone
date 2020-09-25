@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React, { createContext, useState } from "react"
+import { fetchPersonList, persistPersonList as persistPersonListIntoCookie } from "../api/cookie"
 
 interface PersonListContextState {
   personList: string[]
@@ -19,17 +20,22 @@ interface ProviderProps {
   children: React.ReactNode
 }
 export const PersonListProvider = ({ children }: ProviderProps) => {
-  const [personList, setPersonList] = useState<string[]>([])
+  const [personList, setPersonList] = useState<string[]>(fetchPersonList())
+
+  const persistPersonList = (list: string[]) => {
+    setPersonList(list)
+    persistPersonListIntoCookie(list)
+  }
 
   const addPerson = (person: string) => {
     const lowerCasePerson = person.toLocaleLowerCase()
     if (!personList.some(p => p.toLocaleLowerCase() === lowerCasePerson)) {
-      setPersonList([...personList, person])
+      persistPersonList([...personList, person])
     }
   }
 
   const removePerson = (person: string) => {
-    setPersonList(personList.filter(p => p !== person))
+    persistPersonList(personList.filter(p => p !== person))
   }
 
   const contextValue = {
