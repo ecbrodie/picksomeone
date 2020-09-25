@@ -75,7 +75,7 @@ export default function PickSomeone() {
       </Box>
       {personList.length === 0 ? (
         <Box>
-          <NoPeoplePlaceholder>There are none...why don&apos;t you add some personList?</NoPeoplePlaceholder>
+          <NoPeoplePlaceholder>There are none...why don&apos;t you add some people?</NoPeoplePlaceholder>
         </Box>
       ) : (
         personList.map(person => (
