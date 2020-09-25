@@ -36,9 +36,10 @@ export const PersonListProvider = ({ children }: ProviderProps) => {
   }
 
   const addPerson = (person: string) => {
-    const lowerCasePerson = person.toLocaleLowerCase()
+    const trimmedPerson = person.trim()
+    const lowerCasePerson = trimmedPerson.toLocaleLowerCase()
     if (!personList.some(p => p.toLocaleLowerCase() === lowerCasePerson)) {
-      persistPersonList([...personList, person])
+      persistPersonList([...personList, trimmedPerson])
     }
   }
 

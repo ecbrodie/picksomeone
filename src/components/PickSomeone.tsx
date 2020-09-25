@@ -67,7 +67,7 @@ export default function PickSomeone() {
           label="Add Someone"
           variant="outlined"
           value={personInput}
-          onChange={e => setPersonInput(e.target.value.trim())}
+          onChange={e => setPersonInput(e.target.value)}
         />
       </form>
       <Box mt={3} mb={1}>
